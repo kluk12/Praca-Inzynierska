@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HITBTC</title>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+
+    <link rel="stylesheet" href="css/menu.css">
+    <!-- tabela -->
+    <link rel="stylesheet" href="css/rl.css">
+    <script type="text/javascript" src="js/rl.js"></script>
+
+    
+
+ 
+
+
+</head>
+
+<body>
+    <div id='cssmenu'>
+        <ul>
+            <li><img src="css/zd/logo.png" style="height: 34px; width: 50px ;padding: 0;" </a></li>
+            <li class='active has-sub'><a href='#'><span>Rynki BTC</span></a>
+                <ul>
+                    <li class='has-sub'><a href='#'><span>BTC-ETH</span></a>
+
+                    </li>
+                    <li class='has-sub'><a href='#'><span>BTC-LTC</span></a>
+                    </li>
+                    <li class='has-sub'><a href='#'><span>BTC-OMG</span></a>
+                    </li>
+                    <li class='has-sub'><a href='#'><span>BTC-XRP</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Rynki USD</span></a>
+                <ul>
+                    <li class='has-sub'><a href='#'><span>USD-ETH</span></a>
+
+                    </li>
+                    <li class='has-sub'><a href='#'><span>USD-LTC</span></a>
+                    </li>
+                    <li class='has-sub'><a href='#'><span>USD-OMG</span></a>
+                    </li>
+                    <li class='has-sub'><a href='#'><span>USD-XRP</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href='logowanie.html'><span>Logowanie</span></a></li>
+
+        </ul>
+    </div>
+    <div id="log">
+<div>
+    Wpisz hasło
+    <input type="text" id="password" />
+</div>
+
+<div>
+    Siła:
+    <div class="figure" id="strength_score">0%</div>
+</div> <div class="passwordWrapper">
+    <label for="passwordField">
+      Twoje nowe hasło
+    </label>
+    <input type="password" id="passwordField" placeholder="wpisz tutaj swoje hasło, np. Koduu.j3">
+    <progress id="passwordComplexity" value="0"></progress>
+  </div>
+        <form>
+            Imię<br/> <input id="imie" class="tx" type="text" required/><br/> Nazwisko <br/> <input id="naz" class="tx" type="text" required/><br/> Hasło <br/> <input id="has" class="tx" type="password" required/><div id="miernik">0%</div>
+            <br/> Powtórz hasło<br/> <input id="has2" class="tx" type="password" required/><br/> Adres e-mail <br/> <input class="tx" id="meil" type="email" required/><br/> Akceptuję regulamin <input type="checkbox" required/><br/>
+            <input type="button" onclick="ajax_rejstracja()" id="rej" class="btn" value="Zarejestruj się!" /><br/>
+        </form>
+        <div id="info"></div>
+    </div>
+</body>
+
+</html>
