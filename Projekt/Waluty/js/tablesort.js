@@ -225,6 +225,7 @@ function Zero(i) {
 }
 
 function TextTime() {
+    var data = new Date();
     var Date = Zero(data.getDate()) + "." + Zero((data.getMonth() + 1)) + "." + data.getFullYear();
     var Time = Zero(data.getHours()) + ":" + Zero(data.getMinutes()) + ":" + Zero(data.getSeconds());
     // console.log(Date,Time);
@@ -257,13 +258,7 @@ function ajax_bay() {
     $('.errors').html('Nie masz tyle środków'); 
     return;
     }
-   /* if (have * cena !=total ){     
-    $('.errors').html('żle wypełniony formulaż');
-        return;
-    }*/
-    
-    
-    
+          
     var market = "BTC_LTC";
     var typ = 1;
 

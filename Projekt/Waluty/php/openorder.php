@@ -19,7 +19,7 @@ while($row = mysqli_fetch_array($result)) {
     echo "<td>" . $row['typ'] . "</td>";
     echo "<td>" . $row['kurs'] . "</td>";
     echo "<td>" . $row['jednostki'] . "</td>";
-    echo "<td>" . $row['limit'] . "</td>";    
+   // echo "<td>" . $row['limit'] . "</td>";    
     echo "<td>" . $row['market'] . "</td>";
     echo "</tr>";
 }

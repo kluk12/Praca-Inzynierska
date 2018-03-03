@@ -17,7 +17,7 @@ $dbname = "gielda";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
+   
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    // $sql = "INSERT INTO `user`( `email`, `haslo`, `imie`, `nazwisko`) VALUES ('$email','$has','$imie','$naz')";
     $sql = "INSERT INTO `open_orders`( `data`, `typ`, `kurs`, `jednostki`,  `limit`,`total`, `market`) VALUES ('$data','$type','$cena','$have','null','$total','BTC-LTC')";

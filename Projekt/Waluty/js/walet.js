@@ -140,15 +140,10 @@ historyorder("BTC-LTC");
 //dopracować
 //synchronizacja
 function ajax_zor(id) {
-    var url = 'php/zamorder.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
-    var have = $('#have').val();
-    var cena = $('#cena').val();
-    var total = $('#total').val();
-    var market = "BTC_LTC";
-    // var typ = 1;
+    var url = 'php/zamorder.php'; 
 
 
-
+console.log("zamorder")
     $.ajax({
         url: url,
         dataType: 'json',
@@ -159,12 +154,13 @@ function ajax_zor(id) {
         },
         success: function (response) {
             console.log(response);
+            console.log("response");
             // if (response.status == 'ok')
             //  $('#posiadasz').val(total);
             //$('#info').html('Zlecenie powiodło się ');
 
         }
-    })
+    });
 }
 //xmr,btc-usd,usd-bcc,usd-ltc,usd-eth,95 btc-ltc,btc-omg,btc-xmr,btc-eth
 
@@ -174,23 +170,21 @@ var spr = [];//,   dbs;
     var a,bittrex,dbs;
 
 function sprdane() {
- //var dbs = openorderspr();
-   // var bittrex =d();
+
+
     //   openorderspr();
     console.log(bittrex);
     console.log(dbs);
-    //   $(document).ready(function () {          });
-    // console.log(dbs.typ[12]);
-    //  for (var i = 0; i <= (nr.length) - 1; i++) { spr[i] = bittrex.result[nr[i]].Last ; }
+   
     for (i in nr) {
         spr[i] = bittrex.result[nr[i]].Last;
         //console.log(a);
         console.log(spr[i]);
 
     }
-    // for (var i = 0; i <= (nr.length)-1; i++) { console.log(spr[i] = bittrex.result[nr[i]]    ); }
+  
 
-    //  for(var i=0;i<=dbs.length;i++){
+
     //buy
 
     for (i in dbs) {
@@ -201,20 +195,19 @@ function sprdane() {
             if (spr[0] <= dbs[i].kurs) {
 
 console.log(dbs[i]);
-//ajax_zor(dbs[i].id_oo);
+ajax_zor(dbs[i].id_oo);
                 console.log("bay");
             } else
                 console.log("czekamybay"+i);
-
-
         }
         //sell
         if (dbs[i].typ == 0) {
-            console.log("tys");
-            // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+            
+        
             if (spr[0] >= dbs[i].kurs){
                 console.log("sell");
                    console.log(dbs[i]);
+                ajax_zor(dbs[i].id_oo);
             }
             else{
                 console.log("czekamy sell"+i);
