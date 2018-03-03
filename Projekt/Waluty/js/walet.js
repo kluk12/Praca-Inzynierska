@@ -1,8 +1,3 @@
-
-
-
-
-
 var ajaxGet = function (url, callback) {
     var callback = (typeof callback == 'function' ? callback : false),
         xhr = null;
@@ -54,9 +49,9 @@ function balans(war) {
         return;
     }
     if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
+
         xmlhttp = new XMLHttpRequest();
-    } else { // code for IE6, IE5
+    } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function () {
@@ -106,18 +101,19 @@ function openorderspr() {
 
             //  console.log(aa);
             //aa=JSON.parse(aa);
-            
-          console.log(dbs);
-        //  console.log(dbs[2]);
-        //  console.log(dbs[5]);
-         //   //return dbs;
 
+            console.log(dbs);
+            //  console.log(dbs[2]);
+            //  console.log(dbs[5]);
+            //   //return dbs;
 
+             d();
 
         }
     });
+
 }
-//openorderspr();
+openorderspr();
 
 
 function historyorder(war) {
@@ -141,15 +137,15 @@ function historyorder(war) {
 }
 historyorder("BTC-LTC");
 
-
+//dopracować
 //synchronizacja
-function ajax_zor() {
+function ajax_zor(id) {
     var url = 'php/zamorder.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
     var have = $('#have').val();
     var cena = $('#cena').val();
     var total = $('#total').val();
     var market = "BTC_LTC";
-    var typ = 1;
+    // var typ = 1;
 
 
 
@@ -158,8 +154,8 @@ function ajax_zor() {
         dataType: 'json',
         type: 'POST',
         data: {
-           
-            id: 1
+
+            id: id
         },
         success: function (response) {
             console.log(response);
@@ -169,123 +165,174 @@ function ajax_zor() {
 
         }
     })
-           }
+}
 //xmr,btc-usd,usd-bcc,usd-ltc,usd-eth,95 btc-ltc,btc-omg,btc-xmr,btc-eth
-var nr = [253, 257, 256, 261, 259, 95, 117, 188, 61];
-var spr = [],
-    dbs, a;
-d();
-function d() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummaries',
-        function (response) {
-            response = JSON.parse(response);
-            if (!response)
-                return;
-            // var a,i; 
-            bittrex = response;
-            openorderspr();
 
-            $(document).ready(function () {
+
+var nr = [94, 60, 193, 257, 262, 265];
+var spr = [];//,   dbs;
+    var a,bittrex,dbs;
+
+function sprdane() {
+ //var dbs = openorderspr();
+   // var bittrex =d();
+    //   openorderspr();
+    console.log(bittrex);
+    console.log(dbs);
+    //   $(document).ready(function () {          });
+    // console.log(dbs.typ[12]);
+    //  for (var i = 0; i <= (nr.length) - 1; i++) { spr[i] = bittrex.result[nr[i]].Last ; }
+    for (i in nr) {
+        spr[i] = bittrex.result[nr[i]].Last;
+        //console.log(a);
+        console.log(spr[i]);
+
+    }
+    // for (var i = 0; i <= (nr.length)-1; i++) { console.log(spr[i] = bittrex.result[nr[i]]    ); }
+
+    //  for(var i=0;i<=dbs.length;i++){
+    //buy
+
+    for (i in dbs) {
+        console.log("fot"+i);
+        if (dbs[i].typ == 1) {
+
+            //0 dla btc ltc
+            if (spr[0] <= dbs[i].kurs) {
+
+console.log(dbs[i]);
+//ajax_zor(dbs[i].id_oo);
+                console.log("bay");
+            } else
+                console.log("czekamybay"+i);
+
+
+        }
+        //sell
+        if (dbs[i].typ == 0) {
+            console.log("tys");
+            // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+            if (spr[0] >= dbs[i].kurs){
+                console.log("sell");
+                   console.log(dbs[i]);
+            }
+            else{
+                console.log("czekamy sell"+i);
+            }
+
+        }
+        //  */
+
+
+
+    }}
+
+    //zrób to wreszcie 
+    function d() {
+     
+       ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummaries',
+            function (response) {
+                response = JSON.parse(response);
+                if (!response)
+                    return;
+
+                bittrex = response;
+                //   openorderspr();
+                //console.log(bittrex);
+                //   $(document).ready(function () {          });
+                // console.log(dbs.typ[12]);
+                //     for (var i = 0; i <= (nr.length) - 1; i++) { spr[i] = bittrex.result[nr[i]].Last ; }
+
+                // for (var i = 0; i <= (nr.length)-1; i++) { console.log(spr[i] = bittrex.result[nr[i]]    ); }
+
+                //  for(var i=0;i<=dbs.length;i++){
+                //buy
+
+                /*  if (dbs.typ[12] == 1) {
+                         
+                       
+                           if (bittrex.result[nr[0]].Last <= dbs[i].kurs){
+                              
+                               
+                               
+                                  console.log("bay");
+                           } 
+                            
+                           else
+                               console.log("czekamy");
+
+
+                       }
+                   //sell
+                       if (dbs[i].typ == 0 ) {
+                           console.log("tys");
+                           // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+                           if (bittrex.result[nr[0]].Last >= dbs[0].kurs)
+                               console.log("sell");
+                           else
+                               console.log("czekamy");
+
+
+                       }
+                   */
 
             });
-            //console.log(dbs[0].typ);
-            //  for (var i = 0; i <= (nr.length) - 1; i++) {// spr[i] = bittrex.result[nr[i]];     }
-         
-      //  for(var i=0;i<=dbs.length;i++){
-        //buy
+      
+    }
+    /*stoploss            if (dbs[0].typ == 1 && dbs[0].limit != 0) {
+                    console.log("tyss");
+                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+                    if (dbs[0].kurs <= dbs[0].limit) {
+                        console.log("tysss"); //bay do spradzenia
+                        if (bittrex.result[95].Last <= dbs[0].kurs)
+                            console.log("bay");
+                        else
+                            console.log("czekamyb");
+                    } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
+                        if (bittrex.result[95].Last >= dbs[0].kurs)
+                            console.log("sell");
+                        else
+                            console.log("czekamys");
+                    }
 
-           if (dbs[i].typ == 1) {
-              
-            
-                if (bittrex.result[95].Last <= dbs[i].kurs){
-                   
-                    
-                    
-                       console.log("bay");
-                } 
-                 
-                else
-                    console.log("czekamy");
+                } else console.log("niewum");
 
-
-            }
-        //sell
-            if (dbs[i].typ == 0 ) {
-                console.log("tys");
-                // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                if (bittrex.result[95].Last >= dbs[0].kurs)
-                    console.log("sell");
-                else
-                    console.log("czekamy");
-
-
-            }
-        
-        }
-              
-    
-    
-
-    )}
-   /*//stoploss
-            if (dbs[0].typ == 1 && dbs[0].limit != 0) {
-                console.log("tyss");
-                // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                if (dbs[0].kurs <= dbs[0].limit) {
-                    console.log("tysss"); //bay do spradzenia
-                    if (bittrex.result[95].Last <= dbs[0].kurs)
+       //buy
+            if (dbs[0].typ == 1 && dbs[0].limit == 0) {
+                  
+                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+                    if (bittrex.result[95].Last <= dbs[0].kurs) // < bay > sell
                         console.log("bay");
                     else
-                        console.log("czekamyb");
-                } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
+                        console.log("czekamy");
+
+
+                } //sell
+                if (dbs[0].typ == 0 && dbs[0].limit == 0) {
+                    console.log("tys");
+                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
                     if (bittrex.result[95].Last >= dbs[0].kurs)
                         console.log("sell");
                     else
-                        console.log("czekamys");
-                }
-
-            } else console.log("niewum");
-
-   //buy
-        if (dbs[0].typ == 1 && dbs[0].limit == 0) {
-              
-                // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                if (bittrex.result[95].Last <= dbs[0].kurs) // < bay > sell
-                    console.log("bay");
-                else
-                    console.log("czekamy");
+                        console.log("czekamy");
 
 
-            } //sell
-            if (dbs[0].typ == 0 && dbs[0].limit == 0) {
-                console.log("tys");
-                // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                if (bittrex.result[95].Last >= dbs[0].kurs)
-                    console.log("sell");
-                else
-                    console.log("czekamy");
+                } //stoploss
+                if (dbs[0].typ == 1 && dbs[0].limit != 0) {
+                    console.log("tyss");
+                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
+                    if (dbs[0].kurs <= dbs[0].limit) {
+                        console.log("tysss"); //bay do spradzenia
+                        if (bittrex.result[95].Last <= dbs[0].kurs)
+                            console.log("bay");
+                        else
+                            console.log("czekamyb");
+                    } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
+                        if (bittrex.result[95].Last >= dbs[0].kurs)
+                            console.log("sell");
+                        else
+                            console.log("czekamys");
+                    }
 
-
-            } //stoploss
-            if (dbs[0].typ == 1 && dbs[0].limit != 0) {
-                console.log("tyss");
-                // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                if (dbs[0].kurs <= dbs[0].limit) {
-                    console.log("tysss"); //bay do spradzenia
-                    if (bittrex.result[95].Last <= dbs[0].kurs)
-                        console.log("bay");
-                    else
-                        console.log("czekamyb");
-                } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
-                    if (bittrex.result[95].Last >= dbs[0].kurs)
-                        console.log("sell");
-                    else
-                        console.log("czekamys");
-                }
-
-            } else console.log("niewum");
-*/
-
-            //dane z giełdy 
-            //z bazy 
-    
+                } else console.log("niewum");
+    */

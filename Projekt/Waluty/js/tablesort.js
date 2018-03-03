@@ -181,8 +181,8 @@ function inteval() {
             }
     }, 50000)*/
 }
-//inteval();
-//setInterval(inteval, 5000);
+
+//setInterval(inteval, 10000);
 
 
 
@@ -241,13 +241,33 @@ function texttype(typ) {
 }
 
 function ajax_bay() {
-    var url = 'php/buy.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
+    var url = 'php/buy.php'; 
+    $('.errors').html(''); 
     var have = $('#have').val();
     var cena = $('#cena').val();
     var total = $('#total').val();
+    var p = $('#posiadasz4').text();
+    var p2 = $('#posiadasz').text();
+    parseFloat(p,p2);
+    
+   
+    if (have <= p)  
+     $('#posiadasz4').val(have - p);
+    else {
+    $('.errors').html('Nie masz tyle środków'); 
+    return;
+    }
+   /* if (have * cena !=total ){     
+    $('.errors').html('żle wypełniony formulaż');
+        return;
+    }*/
+    
+    
+    
     var market = "BTC_LTC";
     var typ = 1;
 
+    
 
 
     $.ajax({
@@ -269,18 +289,38 @@ function ajax_bay() {
 
         }
     });
+    $('#posiadasz').text(total +p2);
     $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
-    $('#posiadasz').val(total);
+   // $('#posiadasz').val(total);
 }
 
 function ajax_sell() {
-    var url = 'php/sell.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
+    var url = 'php/sell.php';  $('.errors').html(''); 
     var have = $('#shave').val();
     var cena = $('#scena').val();
     var total = $('#stotal').val();
     var typ = 0;
     var market = "BTC_LTC";
-
+ var p = $('#posiadasz').text();
+ var p2 = $('#posiadasz4').text();
+    p= parseFloat(p);
+    p2= parseFloat(p2);
+     if (p == '' && 0)
+         console.log("log");
+         $('#errors').html('Nie posidasz środków'); 
+    if (have <= p)  
+     $('#posiadasz').val(have - p);
+    else { console.log(have+"czi"+ p);
+    $('.errors').html('Nie masz tyle środków'); 
+    return;
+    }
+   /* if (have * cena !=total ){     
+        console.log("log2"); console.log(have+"czi"+ p);
+    $('.errors').html('żle wypełniony formulaż');
+        return;
+    }*/
+   
+    
     // $('#posiadasz4,#posiadasz2').val(total);
     $.ajax({
         url: url,
@@ -305,8 +345,8 @@ function ajax_sell() {
 
 
         }
-    });
-    $('#posiadasz4,#posiadasz2').val(total);
+    });vv=total + p2;
+    $('#posiadasz4').val();
     $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
 }
 
@@ -345,7 +385,7 @@ function ajax_stoploss(typ) {
     });
 }
 
-
+var vv;
 
 
 function posiadasz(war) {
@@ -362,9 +402,9 @@ function posiadasz(war) {
     }
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-ps= this.responseText;
-             var i = $('#posiadasz').val(ps);
-          //  document.getElementById("posiadasz").innerHTML= ps= this.responseText;
+
+          //   $('#posiadasz').val(this.responseText);
+            document.getElementById("posiadasz").innerHTML= this.responseText;
          //   document.getElementById("posiadasz2").innerHTML = this.responseText;
         }
     }
@@ -387,7 +427,7 @@ function posiadasz2(war) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
-            document.getElementById("posiadasz4").innerHTML=pb = this.responseText;
+            document.getElementById("posiadasz4").innerHTML= this.responseText;
           //  document.getElementById("posiadasz3").innerHTML = this.responseText;
         }
     }

@@ -7,12 +7,12 @@
 
   <!--   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="js/jquery.restable.min.js"></script> -->
+<script type="text/javascript" src="js/jquery.restable.min.js"></script>
 <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
 <link rel="stylesheet" href="js/jquery.restable.min.css">
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
        <link rel="stylesheet" href="css/menu.css">
-    <!-- tabela -->
+    <!-- tabela
     <link rel="stylesheet" href="css/table.css">
     
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -20,11 +20,26 @@
 <link rel="stylesheet" href="jquery.restable.min.css">
   
  </script>
-    <!-- tabela -->
+    <!-- tabela 
     <link rel="stylesheet" href="css/form.css">
     <script type="text/javascript" src="js/numeric.js-master/jquery.numeric.js"></script> 
     <script type="text/javascript" src="js/form.js"></script>
-  
+     -->
+   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<!--<script type="text/javascript" src="jquery.restable.min.js"></script>-->
+ <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
+<!--<link rel="stylesheet" href="jquery.restable.min.css">-->
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+       <link rel="stylesheet" href="css/menu.css">
+    <!-- tabela -->
+    <link rel="stylesheet" href="css/table.css">
+    <script type="text/javascript" src="js/tablesort.js"></script>
+
+    <script type="text/javascript" src="js/__jquery.tablesorter/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/__jquery.tablesorter/jquery.tablesorter.js"></script>
+    <!-- tabela -->
+    <link rel="stylesheet" href="css/form.css">
+   
 </head>
 
 <body>
@@ -55,7 +70,7 @@
                 </ul>
             </li>
             
-            <li class='last'><a href='#'><span>Kontakt</span></a></li>
+            <li class='last'><a href='walet.html'><span>Portfel</span></a></li>
         </ul>
     </div>
     <div id="infotabel"style="padding-top: 23px">
@@ -82,7 +97,7 @@
             </tbody>
         </table>
     </div>
-  <!--<center> <div id="chart-container"></div></center> 
+  <center> <div id="chart-container"></div></center> 
    <script>
      var chart = new cryptowatch.Embed('bittrex', 'ltcbtc', {
             timePeriod: '30m',
@@ -128,7 +143,7 @@
 
                         <input type="text" id="have" name="have" value="0" required="required" class="text" maxlength="17" />
                     </div>
-                    <ul class="errors"></ul>
+                  
                 </div>
             </div>
 
@@ -139,7 +154,7 @@
                            <input type="button" id="aktcena" class="btn" name="cena" value="Cena" />
                         <input type="text" id="cena" name="cena" required="required" value="0" class="text" maxlength="17" />
                     </div>
-                    <ul class="errors"></ul>
+                 
                 </div>
             </div>
 
@@ -262,7 +277,7 @@
 
                         <input type="text" id="shave" name="have" value="0" required="required" class="text" maxlength="17" />
                     </div>
-                    <ul class="errors"></ul>
+                    
                 </div>
             </div>
 
@@ -273,7 +288,7 @@
                         <input type="button"id="aktcena" class="btn" name="cena" value="Cena" />
                         <input type="text" id="scena" name="cena" required="required" value="0" class="text" maxlength="17" />
                     </div>
-                    <ul class="errors"></ul>
+                    
                 </div>
             </div>
 
@@ -465,9 +480,11 @@
         <table id="keywords" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
-                    <th><span>CZAS</span></th>
+                    <th><span>CZAS OTWARCIE</span></th>
+                    <th><span>CZAS ZAMKNIĘCIA</span></th>
                     <th><span>TYP</span></th>
-                    <th><span>BID/ASK</span></th><th><span>ILOŚĆ (LTC)</span></th><th><span>ILOŚĆ (BTC)</span></th><th><span>MARKED</span></th>
+                    <th><span>BID/ASK</span></th>
+                  <th> <span>ILOŚĆ</span></th><th><span>MARKED</span></th>
 
 
                 </tr>

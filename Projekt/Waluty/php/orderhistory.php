@@ -16,10 +16,11 @@ $result = mysqli_query($con,$sql);
 
 
 while($row = mysqli_fetch_array($result)) {
+   if( $row['typ']==1) {$typ ="BUY";} else {$typ ="SELL" ;}
     echo "<tr>";
     echo "<td>" . $row['data_otw'] . "</td>";
     echo "<td>" . $row['data_zam'] . "</td>";
-    echo "<td>" . $row['typ'] . "</td>";
+    echo "<td>" . $typ . "</td>";
     echo "<td>" . $row['kurs_otw'] . "</td>";
     echo "<td>" . $row['jednostki'] . "</td>";
     echo "<td>" . $row['market'] . "</td>";
