@@ -1,0 +1,57 @@
+
+* {
+    margin: 0 auto;
+    padding: auto;
+}
+
+
+
+
+
+
+
+ {
+    padding: 0 10px 0 10px;
+}
+
+
+
+
+
+
+
+
+
+ p {
+    padding: 10px 15px 10px 15px;
+    text-indent: 1cm;
+ font-size: 13pt;
+}
+
+ p:first-letter {
+    font-size: 111%;
+    font-weight: bold;
+}
+#content {
+  display: block;
+  width: 95% 5%;
+  background: #fff;
+  margin: 2% 7% ;
+  padding: 10px 17px;
+  -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+}
+ td { 
+  
+  padding: 10px 3px;
+
+    font-size: 11pt;
+} li { 
+  
+  padding: 5px 30px;
+
+    font-size: 11pt;
+}
+h3 {
+     font-size: 15pt;
+      font-weight: bold;
+}

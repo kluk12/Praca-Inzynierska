@@ -74,7 +74,9 @@ input.addEventListener('keyup', checkPasswordStregth);
 function logowanie() {
     var log = $('#logi').val();
     var has = $('#has').val();
-    var url = 'php/logowanie.php'; //http://localhost:82/Projekt/Waluty/php/buy.php    
+    var url = 'php/logowanie.php'; //http://localhost:82/Projekt/Waluty/php/buy.php  
+    
+    
     $.ajax({
         url: url,
         dataType: 'json',

@@ -3,22 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>HITBTC </title>
+    <title>HITBTC</title>
 
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <!--<script type="text/javascript" src="jquery.restable.min.js"></script>-->
     <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
-    <!--<link rel="stylesheet" href="jquery.restable.min.css">-->
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="css/menu.css">
-    <!-- tabela -->
+
     <link rel="stylesheet" href="css/table.css">
-    <script type="text/javascript" src="js/tablesortusdt.js"></script>
+    <script type="text/javascript" src="js/tablesorteth.js"></script>
 
     <script type="text/javascript" src="js/__jquery.tablesorter/jquery-latest.js"></script>
     <script type="text/javascript" src="js/__jquery.tablesorter/jquery.tablesorter.js"></script>
-    <!-- tabela -->
+
     <link rel="stylesheet" href="css/form.css">
 
 </head>
@@ -51,13 +51,13 @@
                     </li>
                     <li class='has-sub'><a href='USDT-ETH.html'><span>USD-ETH</span></a>
                     </li>
+
                 </ul>
             </li>
             </li>
 
             <li class='last'><a href='walet.html'><span>Portfel</span></a></li>
-            <li class='last'><a href='opis_btc.html'><span>Opis Bitcoina</span></a></li>
-            <li class='last'><a href='opis_usdt.html'><span>Opis Teteher</span></a></li>
+            <li class='last'><a href='opis_eth.html'><span>Opis Ethereum</span></a></li>
         </ul>
     </div>
     <div id="infotabel" style="padding-top: 23px">
@@ -88,7 +88,7 @@
         <div id="chart-container"></div>
     </center>
     <script>
-        var chart = new cryptowatch.Embed('bittrex', 'btcusdt', {
+        var chart = new cryptowatch.Embed('bittrex', 'ethbtc', {
             timePeriod: '30m',
             width: 1200,
             height: 700,
@@ -110,7 +110,6 @@
 
                         <h4>BUY</h4>
                         <p id="posiadasz4"></p>
-                        <p>BTC</p>
                     </div>
                 </div>
 
@@ -124,7 +123,7 @@
 
                 <div class="meta-text">
                     <div class="field text required" style="width: 250px;    padding: 5px;">
-                        <label>Posiadasz USDT</label>
+                        <label>Posiadasz ETH</label>
                         <div class="input">
 
                             <input type="button" id="bmax" class="btn" name="pos" value="MAX" />
@@ -193,7 +192,7 @@
             </div>
             <div class="meta-text">
                 <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Posiadasz USDT</label>
+                    <label>Posiadasz ETH</label>
                     <div class="input">
 
                         <input type="button"id="lmax" class="btn" name="blimit" value="MAX" />
@@ -218,7 +217,7 @@
 
             <div class="meta-text">
                 <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label for="text3-text">Ilość USDT</label>
+                    <label for="text3-text">Ilość ETH</label>
                     <div class="input">
                         <input type="button" class="btn" value="ALL " />
                         <input type="text" id="ltotal" name="total" value="0" required="required" class="text" maxlength="17" />
@@ -245,7 +244,6 @@
 
                         <h4>SELL</h4>
                         <p id="posiadasz"></p>
-                        <p>USDT</p>
                     </div>
                 </div>
 
@@ -259,7 +257,7 @@
 
                 <div class="meta-text">
                     <div class="field text required" style="width: 250px;    padding: 5px;">
-                        <label>Posiadasz USDT</label>
+                        <label>Posiadasz ETH</label>
                         <div class="input">
 
                             <input type="button" id="smax" class="btn" name="pos" value="MAX" />
@@ -314,7 +312,7 @@
                 <thead>
                     <tr>
                         <th><span>SUMA BTC</span></th>
-                        <th><span>ILOŚĆ USDT</span></th>
+                        <th><span>ILOŚĆ ETH</span></th>
                         <th><span>KURS</span></th>
 
 
@@ -370,7 +368,7 @@
                 <thead>
                     <tr>
                         <th><span>SUMA BTC</span></th>
-                        <th><span>ILOŚĆ USDT</span></th>
+                        <th><span>ILOŚĆ ETH</span></th>
                         <th><span>KURS</span></th>
 
 
@@ -452,7 +450,7 @@
                     <th><span>CZAS</span></th>
                     <th><span>TYP</span></th>
                     <th><span>BID/ASK</span></th>
-                    <th><span>ILOŚĆ (USDT)</span></th>
+                    <th><span>ILOŚĆ (ETH)</span></th>
                     <th><span>ILOŚĆ (BTC)</span></th>
 
 

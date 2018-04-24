@@ -21,11 +21,11 @@ var ajaxGet = function (url, callback) {
     xhr.send(null);
 }
 var ob = null;
-var marked = "BTC-LTC";
+var marked = "BTC-XRP"; //
 var pb, ps;
 setInterval(inteval, 10000); //do uruchomienia !!!!!!
 function orderbook() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-LTC&type=both',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-XRP&type=both', //
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -34,10 +34,7 @@ function orderbook() {
             ob = response;
 
 
-            //   for (i in ob) {
-            //      console.log(ob);
-            // document.getElementById("zz").innerHTML = ;// outputs an id
-            //   }
+
             $(document).ready(function () {
 
                 //  for (i in ob) {
@@ -96,7 +93,7 @@ var bittrex = null,
     gh = null;
 
 function d() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-XRP', //
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -136,7 +133,7 @@ d();
 
 
 function aktualizacja() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-XRP',
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -168,12 +165,48 @@ function aktualizacja() {
 
 
 function inteval() {
-
+    //    let promise = new Promise(resolve => {
+    //  let value =  $.getJSON('https://bittrex.com/api/v1.1/public/getmarketsummaries', function(jd) {
+    //      bittrex=jd;
+    //                  console.log(jd);
+    //    
+    //               });
+    //  resolve(value);
+    //});
+    //
+    //promise.then(response => {
+    //  console.log(1); 
+    //d();
+    // 
+    //}).then(response => {
+    //    aktualizacja();
+    //  console.log(2); 
+    //    
+    //}).then(response => {
+    //    ha();
+    //  console.log(3); 
+    //    
+    //}).then(response => {
+    //    orderbook();
+    //  console.log(4); 
+    //    
+    //});
+    //console.log();
     d();
     orderbook();
     aktualizacja();
     ha();
-
+    /* if (bittrex == null & ob == null)
+         t = setTimeout(inteval, 500);
+     else clearTimeout(t);
+     setTimeout(function () {
+         if (ob == null)
+             for (i in bittrex) {
+                 if (ob.result[i].MarketName == "BTC-ARK")
+                     var a = ob.result[i].Last;
+                 console.log(a);
+             }
+     }, 50000)*/
 }
 
 
@@ -181,7 +214,7 @@ function inteval() {
 
 
 function ha() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarkethistory?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarkethistory?market=btc-XRP',
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -235,7 +268,24 @@ function texttype(typ) {
     }
 }
 
-
+//
+//let promise = new Promise(resolve => {
+//  let value =  $.getJSON('https://bittrex.com/api/v1.1/public/getmarketsummaries', function(jd) {
+//                  console.log(jd);
+//    
+//               });
+//  resolve(value);
+//});
+//
+//promise.then(response => {
+//  console.log(response); 
+//
+//  return a;
+//}).then(response => {
+//   
+//  console.log(response); 
+//    return "another success ";
+//});
 
 
 function ajax_bay() {
@@ -316,6 +366,7 @@ function ajax_sell() {
     var cena = $('#scena').val();
     var total = $('#stotal').val();
     var typ = 0;
+
     var p = $('#posiadasz').html();
     var p2 = $('#posiadasz4').html();
     var aktualna = $('#LAST').html();
@@ -324,15 +375,17 @@ function ajax_sell() {
     if (p == '' && 0)
         console.log("log");
     $('#errors').html('Nie posidasz środków');
-    return;
     if (have <= p)
         $('#posiadasz').val(have - p);
     else {
+        //  console.log(have + "czi" + p);
         $('.errors').html('Nie masz tyle środków');
         return;
     }
     aktualna = parseFloat(aktualna);
     cena = parseFloat(cena);
+
+
 
     $.ajax({
         url: url,
@@ -353,67 +406,72 @@ function ajax_sell() {
         }
     });
     var vv = 0;
+
+
+    // console.log(aktualna, cena);
     if (aktualna == cena) {
         vv = (p - (parseFloat(have)));
-
+        //  console.log(vv, p, have + " 1");
         $('#posiadasz').text(vv.toFixed(8));
         vv = (p2 + (parseFloat(total)));
-
+        // console.log(vv, p, have + " 11");
         $('#posiadasz4').text(vv.toFixed(8));
     } else if (cena < aktualna) {
         vv = (p - (parseFloat(total)));
-
+        // console.log(vv, p, have + " 12");
         $('#posiadasz').text(vv.toFixed(8));
         vv = (p2 + (parseFloat(have)));
         $('#posiadasz4').text(vv.toFixed(8));
     } else {
         vv = (p - (parseFloat(have)));
-        //blokada   
+        //blokada
+
+        // console.log(vv, p, have);
         $('#posiadasz').text(vv.toFixed(8));
     }
 
 
     $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + marked + '</td>  </tr>  ');
 }
-
-function ajax_stoploss(typ) {
-    var url = 'php/stoploss.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
-    var have = $('#lhave').val();
-    var cena = $('#lcena').val();
-    var total = $('#ltotal').val();
-    var limit = $('#limit').val();
-    var market = "BTC_LTC";
-    $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td>  <td id="LIMIT">' + limit + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
-    // console.log(have,cena,total,typ,market,limit, $('#lhave').val(), $('lcena').val(),$('ltotal').val() , $('limit').val() );
-    $.ajax({
-        url: url,
-        dataType: 'json',
-        type: 'POST',
-        data: {
-            total: total,
-            have: have,
-            cena: cena,
-            market: market,
-            typ: typ,
-            limit: limit
-        },
-        success: function (response) {
-            console.log(response);
-            $('#info').html('OK');
-
-            if (response.status == 'ok')
-                console.log("ok");
-
-
-
-
-        }
-    });
-}
+//
+//function ajax_stoploss(typ) {
+//    var url = 'php/stoploss.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
+//    var have = $('#lhave').val();
+//    var cena = $('#lcena').val();
+//    var total = $('#ltotal').val();
+//    var limit = $('#limit').val();
+//    var market = "BTC_LTC";
+//    $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td>  <td id="LIMIT">' + limit + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
+//    // console.log(have,cena,total,typ,market,limit, $('#lhave').val(), $('lcena').val(),$('ltotal').val() , $('limit').val() );
+//    $.ajax({
+//        url: url,
+//        dataType: 'json',
+//        type: 'POST',
+//        data: {
+//            total: total,
+//            have: have,
+//            cena: cena,
+//            market: market,
+//            typ: typ,
+//            limit: limit
+//        },
+//        success: function (response) {
+//            console.log(response);
+//            $('#info').html('OK');
+//
+//            if (response.status == 'ok')
+//                console.log("ok");
+//
+//
+//
+//
+//        }
+//    });
+//}
 
 var vv;
 
-
+//spr
 function posiadasz(war) {
     if (war == "") {
 
@@ -437,7 +495,7 @@ function posiadasz(war) {
     xmlhttp.open("GET", "php/posiadasz.php?q=" + war, true);
     xmlhttp.send();
 }
-
+//spr
 function posiadasz2(war) {
     if (war == "") {
 
@@ -460,7 +518,7 @@ function posiadasz2(war) {
     xmlhttp.open("GET", "php/posiadasz.php?q=" + war, true);
     xmlhttp.send();
 }
-posiadasz("LTC");
+posiadasz("XRP"); //spr
 posiadasz2("BTC");
 
 
@@ -632,7 +690,7 @@ function historyorder(war) {
     xmlhttp.open("GET", "php/orderhistory.php?q=" + war, true);
     xmlhttp.send();
 }
-historyorder("BTC-LTC");
+historyorder("BTC-XRP");
 
 
 $(function () {

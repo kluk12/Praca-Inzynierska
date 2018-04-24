@@ -21,11 +21,11 @@ var ajaxGet = function (url, callback) {
     xhr.send(null);
 }
 var ob = null;
-var marked = "BTC-LTC";
+var marked = "BTC-USDT"; //
 var pb, ps;
 setInterval(inteval, 10000); //do uruchomienia !!!!!!
 function orderbook() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-LTC&type=both',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getorderbook?market=usdt-btc&type=both', //
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -34,10 +34,7 @@ function orderbook() {
             ob = response;
 
 
-            //   for (i in ob) {
-            //      console.log(ob);
-            // document.getElementById("zz").innerHTML = ;// outputs an id
-            //   }
+
             $(document).ready(function () {
 
                 //  for (i in ob) {
@@ -96,7 +93,7 @@ var bittrex = null,
     gh = null;
 
 function d() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=usdt-btc', //
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -134,9 +131,8 @@ function d() {
 }
 d();
 
-
 function aktualizacja() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummary?market=usdt-btc',
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -181,7 +177,7 @@ function inteval() {
 
 
 function ha() {
-    ajaxGet('https://bittrex.com/api/v1.1/public/getmarkethistory?market=btc-ltc',
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarkethistory?market=usdt-btc',
         function (response) {
             response = JSON.parse(response);
             if (!response)
@@ -234,7 +230,6 @@ function texttype(typ) {
         return "BUY"
     }
 }
-
 
 
 
@@ -316,6 +311,7 @@ function ajax_sell() {
     var cena = $('#scena').val();
     var total = $('#stotal').val();
     var typ = 0;
+
     var p = $('#posiadasz').html();
     var p2 = $('#posiadasz4').html();
     var aktualna = $('#LAST').html();
@@ -324,15 +320,17 @@ function ajax_sell() {
     if (p == '' && 0)
         console.log("log");
     $('#errors').html('Nie posidasz środków');
-    return;
     if (have <= p)
         $('#posiadasz').val(have - p);
     else {
+        //  console.log(have + "czi" + p);
         $('.errors').html('Nie masz tyle środków');
         return;
     }
     aktualna = parseFloat(aktualna);
     cena = parseFloat(cena);
+
+
 
     $.ajax({
         url: url,
@@ -353,67 +351,72 @@ function ajax_sell() {
         }
     });
     var vv = 0;
+
+
+    // console.log(aktualna, cena);
     if (aktualna == cena) {
         vv = (p - (parseFloat(have)));
-
+        //  console.log(vv, p, have + " 1");
         $('#posiadasz').text(vv.toFixed(8));
         vv = (p2 + (parseFloat(total)));
-
+        // console.log(vv, p, have + " 11");
         $('#posiadasz4').text(vv.toFixed(8));
     } else if (cena < aktualna) {
         vv = (p - (parseFloat(total)));
-
+        // console.log(vv, p, have + " 12");
         $('#posiadasz').text(vv.toFixed(8));
         vv = (p2 + (parseFloat(have)));
         $('#posiadasz4').text(vv.toFixed(8));
     } else {
         vv = (p - (parseFloat(have)));
-        //blokada   
+        //blokada
+
+        // console.log(vv, p, have);
         $('#posiadasz').text(vv.toFixed(8));
     }
 
 
     $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + marked + '</td>  </tr>  ');
 }
-
-function ajax_stoploss(typ) {
-    var url = 'php/stoploss.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
-    var have = $('#lhave').val();
-    var cena = $('#lcena').val();
-    var total = $('#ltotal').val();
-    var limit = $('#limit').val();
-    var market = "BTC_LTC";
-    $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td>  <td id="LIMIT">' + limit + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
-    // console.log(have,cena,total,typ,market,limit, $('#lhave').val(), $('lcena').val(),$('ltotal').val() , $('limit').val() );
-    $.ajax({
-        url: url,
-        dataType: 'json',
-        type: 'POST',
-        data: {
-            total: total,
-            have: have,
-            cena: cena,
-            market: market,
-            typ: typ,
-            limit: limit
-        },
-        success: function (response) {
-            console.log(response);
-            $('#info').html('OK');
-
-            if (response.status == 'ok')
-                console.log("ok");
-
-
-
-
-        }
-    });
-}
+//
+//function ajax_stoploss(typ) {
+//    var url = 'php/stoploss.php'; //http://localhost:82/Projekt/Waluty/php/buy.php
+//    var have = $('#lhave').val();
+//    var cena = $('#lcena').val();
+//    var total = $('#ltotal').val();
+//    var limit = $('#limit').val();
+//    var market = "BTC_LTC";
+//    $('#OR').append('<tr> <td id="CZAS">' + TextTime() + '</a></td><td id="typ">' + texttype(typ) + '</td><td id="BID/ASK">' + cena + '</td><td id="ILOŚĆ">' + have + '</td>  <td id="LIMIT">' + limit + '</td><td id="TOTAL">' + total + '</td><td id="MARKET">' + market + '</td>  </tr>  ');
+//    // console.log(have,cena,total,typ,market,limit, $('#lhave').val(), $('lcena').val(),$('ltotal').val() , $('limit').val() );
+//    $.ajax({
+//        url: url,
+//        dataType: 'json',
+//        type: 'POST',
+//        data: {
+//            total: total,
+//            have: have,
+//            cena: cena,
+//            market: market,
+//            typ: typ,
+//            limit: limit
+//        },
+//        success: function (response) {
+//            console.log(response);
+//            $('#info').html('OK');
+//
+//            if (response.status == 'ok')
+//                console.log("ok");
+//
+//
+//
+//
+//        }
+//    });
+//}
 
 var vv;
 
-
+//spr
 function posiadasz(war) {
     if (war == "") {
 
@@ -437,7 +440,7 @@ function posiadasz(war) {
     xmlhttp.open("GET", "php/posiadasz.php?q=" + war, true);
     xmlhttp.send();
 }
-
+//spr
 function posiadasz2(war) {
     if (war == "") {
 
@@ -460,9 +463,8 @@ function posiadasz2(war) {
     xmlhttp.open("GET", "php/posiadasz.php?q=" + war, true);
     xmlhttp.send();
 }
-posiadasz("LTC");
+posiadasz("USDT"); //spr
 posiadasz2("BTC");
-
 
 $(document).ready(function () {
 
@@ -476,7 +478,7 @@ $(document).ready(function () {
         var c = $("#cena").val();
         var ca = $("#total").val();
         //   console.log(i,c,ca);        
-        i = ca / c;
+        i = ca * c;
         $("#have").val(i.toFixed(8));
 
     });
@@ -491,6 +493,7 @@ $(document).ready(function () {
     $("#btntotal").click(function () {
 
         var ab = $("#posiadasz4").text();
+
         $("#stotal").val(ab.trim());
 
     });
@@ -520,7 +523,7 @@ $(document).ready(function () {
         var c = $("#scena").val();
         var ca = $("#stotal").val();
         //   console.log(i,c,ca);        
-        ca = c * i;
+        ca = i / c;
         $("#stotal").val(ca.toFixed(8));
     });
     //limit
@@ -539,7 +542,7 @@ $(document).ready(function () {
         var c = $("#cena").val();
         var ca = $("#total").val();
         // console.log(i,c,ca);        
-        ca = c * i;
+        ca = i / c;
         $("#total").val(ca.toFixed(8));
     });
     $("#cena").change(function () {
@@ -547,7 +550,7 @@ $(document).ready(function () {
         var c = $("#cena").val();
         var ca = $("#total").val();
         //   console.log(i,c,ca);        
-        ca = c * i;
+        ca = i / c;
         $("#total").val(ca.toFixed(8));
     });
     $("#total").change(function () {
@@ -555,7 +558,7 @@ $(document).ready(function () {
         var c = $("#cena").val();
         var ca = $("#total").val();
         //   console.log(i,c,ca);        
-        i = ca / c;
+        i = ca * c;
         $("#have").val(i.toFixed(8));
     });
     //stoploss
@@ -589,7 +592,7 @@ $(document).ready(function () {
         var c = $("#scena").val();
         var ca = $("#stotal").val();
         // console.log(i,c,ca);        
-        ca = c * i;
+        ca = i / c;
         $("#stotal").val(ca.toFixed(8));
     });
     $("#scena").change(function () {
@@ -597,7 +600,7 @@ $(document).ready(function () {
         var c = $("#scena").val();
         var ca = $("#stotal").val();
         //   console.log(i,c,ca);        
-        ca = c * i;
+        ca = i / c;
         $("#stotal").val(ca.toFixed(8));
     });
     $("#stotal").change(function () {
@@ -605,11 +608,10 @@ $(document).ready(function () {
         var c = $("#scena").val();
         var ca = $("#stotal").val();
         //   console.log(i,c,ca);        
-        i = ca / c;
+        i = ca * c;
         $("#shave").val(i.toFixed(8));
     });
 });
-
 
 function historyorder(war) {
     if (war == "" || war == "0") {
@@ -632,7 +634,7 @@ function historyorder(war) {
     xmlhttp.open("GET", "php/orderhistory.php?q=" + war, true);
     xmlhttp.send();
 }
-historyorder("BTC-LTC");
+historyorder("BTC-USDT");
 
 
 $(function () {

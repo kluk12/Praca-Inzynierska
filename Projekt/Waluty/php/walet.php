@@ -1,7 +1,7 @@
 
 
 <?php
-//$q = intval($_GET['q']);
+
 
 $con = mysqli_connect('localhost','root','','gielda');
 if (!$con) {
@@ -10,7 +10,7 @@ if (!$con) {
 
 mysqli_select_db($con,"gielda");
 $sql="SELECT * FROM `deposit_history`";
-$result = mysqli_query($con,$sql);
+mysqli_query($con,$sql);
 
 
 while($row = mysqli_fetch_array($result)) {

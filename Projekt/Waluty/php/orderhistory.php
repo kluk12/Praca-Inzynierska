@@ -10,7 +10,8 @@ mysqli_select_db($con,"gielda");
 //if($q ==0){
 //$sql="SELECT * FROM `orders_history`";
 //} else {
-   $sql="SELECT * FROM `orders_history` WHERE `market`='$q'";//`market`='BTC-LTC'
+   $sql="SELECT * FROM `orders_history`";
+   //$sql="SELECT * FROM `orders_history` WHERE `market`='$q'";//`market`='BTC-LTC'
 //}
 $result = mysqli_query($con,$sql);
 
@@ -22,8 +23,10 @@ while($row = mysqli_fetch_array($result)) {
     echo "<td>" . $row['data_zam'] . "</td>";
     echo "<td>" . $typ . "</td>";
     echo "<td>" . $row['kurs_otw'] . "</td>";
+       echo "<td>" . $row['limit'] . "</td>";
     echo "<td>" . $row['jednostki'] . "</td>";
     echo "<td>" . $row['market'] . "</td>";
+ 
     echo "</tr>";
 }
 

@@ -3,34 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>BIT DEMO</title>
+    <title>HITBTC</title>
 
-  <!--   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="js/jquery.restable.min.js"></script>
-<script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
-<link rel="stylesheet" href="js/jquery.restable.min.css">
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-       <link rel="stylesheet" href="css/menu.css">
-    <!-- tabela
-    <link rel="stylesheet" href="css/table.css">
-    
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="jquery.restable.min.js"></script>
-<link rel="stylesheet" href="jquery.restable.min.css">
-  
- </script>
-    <!-- tabela 
-    <link rel="stylesheet" href="css/form.css">
-    <script type="text/javascript" src="js/numeric.js-master/jquery.numeric.js"></script> 
-    <script type="text/javascript" src="js/form.js"></script>
-     -->
-   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<!--<script type="text/javascript" src="jquery.restable.min.js"></script>-->
- <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
-<!--<link rel="stylesheet" href="jquery.restable.min.css">-->
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-       <link rel="stylesheet" href="css/menu.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <!--<script type="text/javascript" src="jquery.restable.min.js"></script>-->
+    <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
+    <!--<link rel="stylesheet" href="jquery.restable.min.css">-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="css/menu.css">
     <!-- tabela -->
     <link rel="stylesheet" href="css/table.css">
     <script type="text/javascript" src="js/tablesort.js"></script>
@@ -39,42 +20,48 @@
     <script type="text/javascript" src="js/__jquery.tablesorter/jquery.tablesorter.js"></script>
     <!-- tabela -->
     <link rel="stylesheet" href="css/form.css">
-   
+
 </head>
 
 <body>
 
-    
-    <div id='cssmenu' >
+
+    <div id='cssmenu'>
         <ul>
-            <li><a href='../index.html'  style="padding: 0;"><img src="css/zd/logo.png" style="height: 34px; width: 50px ;padding: 0;"</a></li>
+            <li><a href='../index.html' style="padding: 0;"><img src="css/zd/logo.png" style="height: 34px; width: 50px ;padding: 0;"</a></li>
             <li class='active has-sub'><a href='#'><span>Rynki BTC</span></a>
                 <ul>
-                    <li class='has-sub'><a href='#'><span>BTC-ETH</span></a>
-                        
+                    <li class='has-sub'><a href='BTC-ETH.html'><span>BTC-ETH</span></a>
+
                     </li>
-                    <li class='has-sub'><a href='#'><span>BTC-LTC</span></a>                   
-                    </li> <li class='has-sub'><a href='#'><span>BTC-OMG</span></a>                   
-                    </li> <li class='has-sub'><a href='#'><span>BTC-XRP</span></a>                   
+                    <li class='has-sub'><a href='BTC_LTC.html'><span>BTC-LTC</span></a>
                     </li>
-                </ul>
-            </li><li class='active has-sub'><a href='#'><span>Rynki USD</span></a>
-                <ul>
-                    <li class='has-sub'><a href='#'><span>USD-ETH</span></a>
-                        
+                    <li class='has-sub'><a href='BTC-XRP.html'><span>BTC-XRP</span></a>
                     </li>
-                    <li class='has-sub'><a href='#'><span>USD-LTC</span></a>                   
-                    </li> <li class='has-sub'><a href='#'><span>USD-OMG</span></a>                   
-                    </li> <li class='has-sub'><a href='#'><span>USD-XRP</span></a>                   
-                    </li>
+
+
                 </ul>
             </li>
-            
+            <li class='active has-sub'><a href='#'><span>Rynki USD</span></a>
+                <ul>
+                    <li class='has-sub'><a href='USDT-BTC.html'><span>USD-BTC</span></a>
+
+                    </li>
+                    <li class='has-sub'><a href='USDT-LTC.html'><span>USD-LTC</span></a>
+                    </li>
+                    <li class='has-sub'><a href='USDT-ETH.html'><span>USD-ETH</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            </li>
+
             <li class='last'><a href='walet.html'><span>Portfel</span></a></li>
+            <li class='last'><a href='opis_litecoin.html'><span>Opis Litecoin</span></a></li>
         </ul>
     </div>
-    <div id="infotabel"style="padding-top: 23px">
-        <table id="keywords" >
+    <div id="infotabel" style="padding-top: 23px">
+        <table id="keywords">
             <thead>
                 <tr>
                     <th><span>LAST</span></th>
@@ -97,9 +84,11 @@
             </tbody>
         </table>
     </div>
-  <center> <div id="chart-container"></div></center> 
-   <script>
-     var chart = new cryptowatch.Embed('bittrex', 'ltcbtc', {
+    <center>
+        <div id="chart-container"></div>
+    </center>
+    <script>
+        var chart = new cryptowatch.Embed('bittrex', 'ltcbtc', {
             timePeriod: '30m',
             width: 1200,
             height: 700,
@@ -108,75 +97,74 @@
 
         chart.mount('#chart-container');
 
-      
     </script>
--->
-   
-   <div class="formy"  > 
-    
-       <div class="bay" style=" float: left;   padding: 25px;">
-        <form  method="POST">
 
-            <div class="meta-section">
-                <div class="section-title" style="text-align: left;">
+    <div class="formy">
 
-                    <h4>BUY</h4>
-                    <p id="posiadasz4"></p>  
-                </div>
-            </div>
+        <div class="bay" style=" float: left;   padding: 25px;">
+            <form method="POST">
 
-            <div class="meta-section">
-                <div class="section-title" style="text-align: left;">
+                <div class="meta-section">
+                    <div class="section-title" style="text-align: left;">
 
-                    <h4></h4>
-
-                </div>
-            </div>
-
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Posiadasz BTC</label>
-                    <div class="input">
-
-                        <input type="button" id="bmax" class="btn" name="pos" value="MAX" />
-
-
-                        <input type="text" id="have" name="have" value="0" required="required" class="text" maxlength="17" />
+                        <h4>BUY</h4>
+                        <p id="posiadasz4"></p>
+                        <p>BTC</p>
                     </div>
-                  
                 </div>
-            </div>
 
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Cena</label>
-                    <div class="input">
-                           <input type="button" id="aktcena" class="btn" name="cena" value="Cena" />
-                        <input type="text" id="cena" name="cena" required="required" value="0" class="text" maxlength="17" />
-                    </div>
-                 
-                </div>
-            </div>
+                <div class="meta-section">
+                    <div class="section-title" style="text-align: left;">
 
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px; padding: 5px;">
-                    <label for="text3-text">Ilość LTC</label>
-                    <div class="input">
-                        <input type="button" class="btn" id="all"value="ALL " />
-                        <input type="text" id="total" name="total" value="0" required="required" class="text" maxlength="17" />
+                        <h4></h4>
+
                     </div>
-                    <ul class="errors"></ul>
                 </div>
-            </div>
-           
-            <div style="text-align: center">
-                <input type="button" id="bbay" class="btn" onclick="ajax_bay();" value="BUY " />
-            </div>
-<div id="info"></div>
-        </form>
-    </div>
-    
-     <!--  <div class="stoploss" style=" float: left;padding: 25px;">
+
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px;    padding: 5px;">
+                        <label>Posiadasz LTC</label>
+                        <div class="input">
+
+                            <input type="button" id="bmax" class="btn" name="pos" value="MAX" />
+
+
+                            <input type="text" id="have" name="have" value="0" required="required" class="text" maxlength="17" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px;    padding: 5px;">
+                        <label>Cena</label>
+                        <div class="input">
+                            <input type="button" id="aktcena" class="btn" name="cena" value="Cena" />
+                            <input type="text" id="cena" name="cena" required="required" value="0" class="text" maxlength="17" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px; padding: 5px;">
+                        <label for="text3-text">Ilość BTC</label>
+                        <div class="input">
+                            <input type="button" class="btn" id="all" value="ALL " />
+                            <input type="text" id="total" name="total" value="0" required="required" class="text" maxlength="17" />
+                        </div>
+                        <ul class="errors"></ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center">
+                    <input type="button" id="bbay" class="btn" onclick="ajax_bay();" value="BUY " />
+                </div>
+                <div id="info"></div>
+            </form>
+        </div>
+
+        <!--  <div class="stoploss" style=" float: left;padding: 25px;">
         <form action="php/stoploss.php" method="POST">
 
             <div class="meta-section">
@@ -248,189 +236,190 @@
         </form>
     </div>-->
 
- <div class="sell" style="    padding: 25px;">
-        <form action="php/sell.php" method="POST">
+        <div class="sell" style="    padding: 25px;">
+            <form action="php/sell.php" method="POST">
 
-            <div class="meta-section">
-                <div class="section-title" >
+                <div class="meta-section">
+                    <div class="section-title">
 
-                    <h4>SELL</h4>
-                    <p id="posiadasz"></p>
-                </div>
-            </div>
-
-            <div class="meta-section">
-                <div class="section-title" style="text-align: left;">
-
-                    <h4></h4>
-
-                </div>
-            </div>
-
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Posiadasz LTC</label>
-                    <div class="input">
-
-                        <input type="button" id="smax" class="btn" name="pos" value="MAX" />
-
-
-                        <input type="text" id="shave" name="have" value="0" required="required" class="text" maxlength="17" />
+                        <h4>SELL</h4>
+                        <p id="posiadasz"></p>
+                        <p>LTC</p>
                     </div>
-                    
                 </div>
-            </div>
 
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Cena</label>
-                    <div class="input">
-                        <input type="button"id="aktcena" class="btn" name="cena" value="Cena" />
-                        <input type="text" id="scena" name="cena" required="required" value="0" class="text" maxlength="17" />
+                <div class="meta-section">
+                    <div class="section-title" style="text-align: left;">
+
+                        <h4></h4>
+
                     </div>
-                    
                 </div>
-            </div>
 
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label for="text3-text">Ilość BTC</label>
-                    <div class="input">
-                        <input type="button"id="btntotal" class="btn" value="ALL " id="sall" />
-                        <input type="text" id="stotal" name="total" value="0" required="required" class="text" maxlength="17" />
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px;    padding: 5px;">
+                        <label>Posiadasz LTC</label>
+                        <div class="input">
+
+                            <input type="button" id="smax" class="btn" name="pos" value="MAX" />
+
+
+                            <input type="text" id="shave" name="have" value="0" required="required" class="text" maxlength="17" />
+                        </div>
+
                     </div>
-                    <ul class="errors"></ul>
                 </div>
-            </div>
-           
-            <div  >
-                <input style="   margin-left: 10%;" type="button" onclick="ajax_sell()" class="btn" value="SELL" />
-            </div>
 
-        </form>
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px;    padding: 5px;">
+                        <label>Cena</label>
+                        <div class="input">
+                            <input type="button" id="aktcena" class="btn" name="cena" value="Cena" />
+                            <input type="text" id="scena" name="cena" required="required" value="0" class="text" maxlength="17" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="meta-text">
+                    <div class="field text required" style="width: 250px;    padding: 5px;">
+                        <label for="text3-text">Ilość BTC</label>
+                        <div class="input">
+                            <input type="button" id="btntotal" class="btn" value="ALL " id="sall" />
+                            <input type="text" id="stotal" name="total" value="0" required="required" class="text" maxlength="17" />
+                        </div>
+                        <ul class="errors"></ul>
+                    </div>
+                </div>
+
+                <div>
+                    <input style="   margin-left: 10%;" type="button" onclick="ajax_sell()" class="btn" value="SELL" />
+                </div>
+
+            </form>
+        </div>
+
     </div>
 
-</div>
-   
-<br>
-<div id="ordaa">
-   <h1>LISTA ZLECEŃ</h1>
-    <div id="ord"style="float: left;">
-    
+    <br>
+    <div id="ordaa">
+        <h1>LISTA ZLECEŃ</h1>
+        <div id="ord" style="float: left;">
 
 
-<h1>KUPNO</h1>
-        <table id="keywords" cellspacing="0" cellpadding="0">
-            <thead>
-                <tr>
-                    <th><span>SUMA BTC</span></th>
-                    <th><span>ILOŚĆ LTC</span></th>
-                    <th><span>KURS</span></th>
+
+            <h1>KUPNO</h1>
+            <table id="keywords" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th><span>SUMA BTC</span></th>
+                        <th><span>ILOŚĆ LTC</span></th>
+                        <th><span>KURS</span></th>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
 
-                    <td id="1"></td>
-                    <td id="2"></td>
-                    <td id="3"></td>
+                        <td id="1"></td>
+                        <td id="2"></td>
+                        <td id="3"></td>
 
-                </tr>
-                <tr>
+                    </tr>
+                    <tr>
 
-                    <td id="4"></td>
-                    <td id="5"></td>
-                    <td id="6"></td>
-                </tr>
-                <tr>
+                        <td id="4"></td>
+                        <td id="5"></td>
+                        <td id="6"></td>
+                    </tr>
+                    <tr>
 
-                    <td id="7"></td>
-                    <td id="8"></td>
-                    <td id="9"></td>
-                </tr>
-                <tr>
+                        <td id="7"></td>
+                        <td id="8"></td>
+                        <td id="9"></td>
+                    </tr>
+                    <tr>
 
-                    <td id="10"></td>
-                    <td id="11"></td>
-                    <td id="12"></td>
-                </tr>
-                <tr>
+                        <td id="10"></td>
+                        <td id="11"></td>
+                        <td id="12"></td>
+                    </tr>
+                    <tr>
 
-                    <td id="13"></td>
-                    <td id="14"></td>
-                    <td id="15"></td>
-                </tr>
-                <tr>
+                        <td id="13"></td>
+                        <td id="14"></td>
+                        <td id="15"></td>
+                    </tr>
+                    <tr>
 
-                    <td id="16"></td>
-                    <td id="17"></td>
-                    <td id="18"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-
-    <div id="ord2">
-
-<h1>SZPRZEDAŻ</h1>
-        <table id="keywords" >
-            <thead>
-                <tr>
-                    <th><span>SUMA BTC</span></th>
-                    <th><span>ILOŚĆ LTC</span></th>
-                    <th><span>KURS</span></th>
+                        <td id="16"></td>
+                        <td id="17"></td>
+                        <td id="18"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+        <div id="ord2">
 
-                    <td id="s1"></td>
-                    <td id="s2"></td>
-                    <td id="s3"></td>
+            <h1>SPRZEDAŻ</h1>
+            <table id="keywords">
+                <thead>
+                    <tr>
+                        <th><span>SUMA BTC</span></th>
+                        <th><span>ILOŚĆ LTC</span></th>
+                        <th><span>KURS</span></th>
 
-                </tr>
-                <tr>
 
-                    <td id="s4"></td>
-                    <td id="s5"></td>
-                    <td id="s6"></td>
-                </tr>
-                <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
 
-                    <td id="s7"></td>
-                    <td id="s8"></td>
-                    <td id="s9"></td>
-                </tr>
-                <tr>
+                        <td id="s1"></td>
+                        <td id="s2"></td>
+                        <td id="s3"></td>
 
-                    <td id="s10"></td>
-                    <td id="s11"></td>
-                    <td id="s12"></td>
-                </tr>
-                <tr>
+                    </tr>
+                    <tr>
 
-                    <td id="s13"></td>
-                    <td id="s14"></td>
-                    <td id="s15"></td>
-                </tr>
-                <tr>
+                        <td id="s4"></td>
+                        <td id="s5"></td>
+                        <td id="s6"></td>
+                    </tr>
+                    <tr>
 
-                    <td id="s16"></td>
-                    <td id="s17"></td>
-                    <td id="s18"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        <td id="s7"></td>
+                        <td id="s8"></td>
+                        <td id="s9"></td>
+                    </tr>
+                    <tr>
+
+                        <td id="s10"></td>
+                        <td id="s11"></td>
+                        <td id="s12"></td>
+                    </tr>
+                    <tr>
+
+                        <td id="s13"></td>
+                        <td id="s14"></td>
+                        <td id="s15"></td>
+                    </tr>
+                    <tr>
+
+                        <td id="s16"></td>
+                        <td id="s17"></td>
+                        <td id="s18"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <br><br><br>
     <div id="infotabel" style="width:900px;margin: 0 17%;">
-<h1>OTWARTE TRANSAKCJE</h1>
+        <h1>OTWARTE TRANSAKCJE</h1>
 
         <table id="keywords" cellspacing="0" cellpadding="0">
             <thead>
@@ -438,44 +427,46 @@
                     <th><span>CZAS</span></th>
                     <th><span>TYP</span></th>
                     <th><span>BID/ASK</span></th>
-                    <th><span>ILOŚĆ </span></th>                 
+                    <th><span>ILOŚĆ </span></th>
                     <th><span>TOTAL</span></th>
                     <th><span>MARKET</span></th>
 
 
                 </tr>
             </thead>
-            
+
             <tbody id="OR">
-            
-        </tbody>
+
+            </tbody>
         </table>
-        
+
     </div>
     <br>
-<div id="infotabel" style="width:700px;margin: 0 27%;">
+    <div id="infotabel" style="width:700px;margin: 0 27%;">
 
-<h1>OSTATNIE TRANSAKCJE</h1>
+        <h1>OSTATNIE TRANSAKCJE</h1>
         <table id="keywords" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <th><span>CZAS</span></th>
                     <th><span>TYP</span></th>
-                    <th><span>BID/ASK</span></th><th><span>ILOŚĆ (LTC)</span></th><th><span>ILOŚĆ (BTC)</span></th>
+                    <th><span>BID/ASK</span></th>
+                    <th><span>ILOŚĆ (LTC)</span></th>
+                    <th><span>ILOŚĆ (BTC)</span></th>
 
 
                 </tr>
             </thead>
-            
+
             <tbody id="hs">
-            
-        </tbody>
+
+            </tbody>
         </table>
-        
+
     </div>
     <br>
-    <div id="infotabel" style="width:900px;margin: 0 17%;">
-<h1>HISTORIA TRANSAKCJI</h1>
+    <div id="infotabel" style="width:1100px;margin: 0 4%;">
+        <h1>HISTORIA TRANSAKCJI</h1>
 
         <table id="keywords" cellspacing="0" cellpadding="0">
             <thead>
@@ -484,22 +475,24 @@
                     <th><span>CZAS ZAMKNIĘCIA</span></th>
                     <th><span>TYP</span></th>
                     <th><span>BID/ASK</span></th>
-                  <th> <span>ILOŚĆ</span></th><th><span>MARKED</span></th>
+                    <th><span>AKTUALNY KURS</span></th>
+                    <th> <span>ILOŚĆ</span></th>
+                    <th><span>MARKED</span></th>
 
 
                 </tr>
             </thead>
-            
+
             <tbody id="hist">
-            
-        </tbody>
+
+            </tbody>
         </table>
     </div>
-   
 
 
 
-   
+
+
 
 </body>
 

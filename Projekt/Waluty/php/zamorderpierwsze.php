@@ -2,10 +2,9 @@
 //$q = $_GET['id'];
 //$q = $_POST['id'];
 //$q = 'a';
-if (isset($_POST['id'])){
+if (isset($_POST['id']))
    $q = $_POST['id']; 
-   $trans = $_POST['jed']; //dodać
-}
+    
 $con = mysqli_connect('localhost','root','','gielda');
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
@@ -16,14 +15,11 @@ $id_user=1;
 $btc;
 $ltc;
     $omg;
-    $usdt;$bbtc;
-$bltc;
-    $bomg;
-    $busdt;
+    $usdt;
 mysqli_select_db($con,"gielda");
 $sql="  SELECT * FROM `open_orders`WHERE `id_oo`='$q'";
 
-  
+  //$sql.="SELECT * FROM `orders_history`  WHERE `id_oh`='25'"; WHERE `id_oo`='44'
 
 $result = mysqli_query($con,$sql);
 $sql21="  SELECT * FROM `account_balans`WHERE `id_user`='$id_user'";
@@ -34,11 +30,10 @@ while($row = mysqli_fetch_array($result2)) {
      $symbol  =    $row['symbol'] ;
      $balans =    $row['balans'] ;
      $id_userab  =    $row['id_user'] ;
-    $block= $row["block"];
-    if ($symbol =="BTC"){$btc =$balans; $bbtc=$block;}
-    if ($symbol =="LTC"){$ltc =$balans;$bltc=$block;}
-    if ($symbol =="OMG"){$omg =$balans;$bomg=$block;}
-    if ($symbol =="USDT"){$usdt =$balans;$busdt=$block;}
+    if ($symbol =="BTC"){$btc =$balans;}
+    if ($symbol =="LTC"){$ltc =$balans;}
+    if ($symbol =="OMG"){$omg =$balans;}
+    if ($symbol =="USDT"){$usdt =$balans;}
 }
     
 while($row = mysqli_fetch_array($result)) {
@@ -65,23 +60,24 @@ $mk=substr($omarket, 4, 7);//ltc
 if (mysqli_query($con,$sql2))    $tt= 2; else      $tt= 0;
 //zrobić te zapytania 
     
-   // $sql21="  SELECT * FROM `account_balans`WHERE `id_user`='$id_user'";
-   // if (mysqli_query($con,$sql21) ) {        $tt.= 1;}else   $tt.= 0;
+    $sql21="  SELECT * FROM `account_balans`WHERE `id_user`='$id_user'";
+    if (mysqli_query($con,$sql21) ) {        $tt.= 1;}else   $tt.= 0;
      if($otyp==0){
-        if ($omarket== 'BTC-LTC'){
-            $ojednostki -=$ltc;//tu do zminy
-            $total +=$btc;
+        if ($omarket== 'BTC-LTC'){//spr -
+            $ojednostki =$ltc - $ojednostki ;
+            $total =$btc + $total ;
         }
     }
     if($otyp==1){  
         if ($omarket== 'BTC-LTC'){
-            $ojednostki -=$btc;
-            $total +=$ltc;
+            $ojednostki =$btc - $ojednostki;
+            $total =$ltc +$total;
         }}
 $sql3="UPDATE `account_balans` SET `balans`='$ojednostki' WHERE `symbol`='$mk'";// zmiena z blokiem
-
+//$sql3="UPDATE `account_balans` SET `balans`='$ojednostki' WHERE `symbol`='$mk'";// zmiena z blokiem
 $sql32="UPDATE `account_balans` SET `balans`='$total' WHERE `symbol`='$mp'";
-
+//$sql32="UPDATE `account_balans` SET `balans`='$total' WHERE `symbol`='$mp'";
+//UPDATE `account_balans` SET `balans`='$total',`id_user`='1' WHERE `symbol`='$mp UPDATE `account_balans` SET `balans`='$ojednostki',`id_user`='1' WHERE `symbol`='$mk'
 if (mysqli_query($con,$sql3) ) {        $tt.= 3;}else   $tt.= 0;
 if (mysqli_query($con,$sql32) ) {        $tt.= 4;}else   $tt.= 0;
 $sql4="DELETE FROM `open_orders` WHERE `id_oo`=' $id_oo'";//id polepszyć

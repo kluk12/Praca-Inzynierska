@@ -1,6 +1,6 @@
 /*@import url('https://fonts.googleapis.com/css?family=Amarante');*/
 
-html, body,  span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body,  span, applet, object,  h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,   header, hgroup, menu, nav, output,  section,  {
   margin: 0;
   padding: 0;
   border: 0;
@@ -10,9 +10,9 @@ html, body,  span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote
   outline: none;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+
   -webkit-box-sizing: 
-  -moz-box-sizing: border-box;
+
  
 }
 html { overflow-y: scroll; }
@@ -27,8 +27,7 @@ body {
 }
 
 
-::selection { background: #5f74a0; color: #fff; }
-::-moz-selection { background: #5f74a0; color: #fff; }
+
 ::-webkit-selection { background: #5f74a0; color: #fff; }
 
 br { display: block; line-height: 1.6em; } 
@@ -39,9 +38,9 @@ ol, ul { list-style: none; }
 input, textarea { 
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+ 
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+ 
   box-sizing: border-box;
   outline: none; 
 }
@@ -73,7 +72,7 @@ div.formy{
 formy > sell{
          margin: 0 13% 0 5% ;
     }
-/** page structure **/
+
 #ord{/*,#wwa*/
   display: block;
   width: 400px;
@@ -87,6 +86,14 @@ formy > sell{
   width: 95% 5%;
   background: #fff;
   margin: 0 7%;
+  padding: 10px 17px;
+  -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+}
+#wrapper {
+  display: block;
+  width: 95% 5%;
+  background: #fff;
+  margin: 2% 7% ;
   padding: 10px 17px;
   -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
 }
@@ -144,12 +151,7 @@ formy > sell{
   background: #acc8dd;
 }
 
-#keywords thead tr th.headerSortUp span {
-  background-image: url('https://i.imgur.com/SP99ZPJ.png');
-}
-#keywords thead tr th.headerSortDown span {
-  background-image: url('https://i.imgur.com/RkA9MBo.png');
-}
+
 
 
 #keywords tbody tr { 

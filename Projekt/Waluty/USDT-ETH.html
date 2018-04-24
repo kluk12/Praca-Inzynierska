@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/menu.css">
     <!-- tabela -->
     <link rel="stylesheet" href="css/table.css">
-    <script type="text/javascript" src="js/tablesortusdt.js"></script>
+    <script type="text/javascript" src="js/tablesortusdETH.js"></script>
 
     <script type="text/javascript" src="js/__jquery.tablesorter/jquery-latest.js"></script>
     <script type="text/javascript" src="js/__jquery.tablesorter/jquery.tablesorter.js"></script>
@@ -51,12 +51,13 @@
                     </li>
                     <li class='has-sub'><a href='USDT-ETH.html'><span>USD-ETH</span></a>
                     </li>
+
                 </ul>
             </li>
             </li>
 
             <li class='last'><a href='walet.html'><span>Portfel</span></a></li>
-            <li class='last'><a href='opis_btc.html'><span>Opis Bitcoina</span></a></li>
+            <li class='last'><a href='opis_eth.html'><span>Opis Ethereum</span></a></li>
             <li class='last'><a href='opis_usdt.html'><span>Opis Teteher</span></a></li>
         </ul>
     </div>
@@ -88,7 +89,7 @@
         <div id="chart-container"></div>
     </center>
     <script>
-        var chart = new cryptowatch.Embed('bittrex', 'btcusdt', {
+        var chart = new cryptowatch.Embed('bittrex', 'ethusdt', {
             timePeriod: '30m',
             width: 1200,
             height: 700,
@@ -110,7 +111,7 @@
 
                         <h4>BUY</h4>
                         <p id="posiadasz4"></p>
-                        <p>BTC</p>
+                        <p>ETH</p>
                     </div>
                 </div>
 
@@ -149,7 +150,7 @@
 
                 <div class="meta-text">
                     <div class="field text required" style="width: 250px; padding: 5px;">
-                        <label for="text3-text">Ilość BTC</label>
+                        <label for="text3-text">Ilość ETH</label>
                         <div class="input">
                             <input type="button" class="btn" id="all" value="ALL " />
                             <input type="text" id="total" name="total" value="0" required="required" class="text" maxlength="17" />
@@ -164,78 +165,6 @@
                 <div id="info"></div>
             </form>
         </div>
-
-        <!--  <div class="stoploss" style=" float: left;padding: 25px;">
-        <form action="php/stoploss.php" method="POST">
-
-            <div class="meta-section">
-                <div class="section-title" style="text-align: left;">
-
-                    <h4>LIMIT</h4>
-                    <p id="posiadasz2"></p>
-                    <p id="posiadasz3"></p>
-                </div>
-            </div>
-
-           
-   <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Limit</label>
-                    <div class="input">
-
-                   
-         <input type="button" class="btn"id="btnlimit" name="cena" value="Cena" />
-
-                        <input type="text" id="limit" name="limit" value="0" required="required" class="text" maxlength="17" />
-                    </div>
-                    <ul class="errors"></ul>
-                </div>
-            </div>
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Posiadasz USDT</label>
-                    <div class="input">
-
-                        <input type="button"id="lmax" class="btn" name="blimit" value="MAX" />
-
-
-                        <input type="text" id="lhave" name="limit" value="0" required="required" class="text" maxlength="17" />
-                    </div>
-                    <ul class="errors"></ul>
-                </div>
-            </div>
-
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label>Cena</label>
-                    <div class="input">
-                        <input type="button" id="aktcena" class="btn" name="cena" value="Cena" />
-                        <input type="text" id="lcena" name="cena" required="required" value="0" class="text" maxlength="17" />
-                    </div>
-                    <ul class="errors"></ul>
-                </div>
-            </div>
-
-            <div class="meta-text">
-                <div class="field text required" style="width: 250px;    padding: 5px;">
-                    <label for="text3-text">Ilość USDT</label>
-                    <div class="input">
-                        <input type="button" class="btn" value="ALL " />
-                        <input type="text" id="ltotal" name="total" value="0" required="required" class="text" maxlength="17" />
-                    </div>
-                    <ul class="errors"></ul>
-                </div>
-            </div>
-           <div>
- 
-</div>
-            <div style="text-align: center">
-                <input type="button"id="sbuy" class="btn" onclick="ajax_stoploss(1)" value="BUY" name="buy"/>
-                <input type="button"id="ssell" class="btn" onclick="ajax_stoploss(0)" value="SELL" name="sell"/>
-            </div>
-
-        </form>
-    </div>-->
 
         <div class="sell" style="    padding: 25px;">
             <form action="php/sell.php" method="POST">
@@ -284,7 +213,7 @@
 
                 <div class="meta-text">
                     <div class="field text required" style="width: 250px;    padding: 5px;">
-                        <label for="text3-text">Ilość BTC</label>
+                        <label for="text3-text">Ilość ETH</label>
                         <div class="input">
                             <input type="button" id="btntotal" class="btn" value="ALL " id="sall" />
                             <input type="text" id="stotal" name="total" value="0" required="required" class="text" maxlength="17" />
@@ -313,7 +242,7 @@
             <table id="keywords" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
-                        <th><span>SUMA BTC</span></th>
+                        <th><span>SUMA ETH</span></th>
                         <th><span>ILOŚĆ USDT</span></th>
                         <th><span>KURS</span></th>
 
@@ -369,7 +298,7 @@
             <table id="keywords">
                 <thead>
                     <tr>
-                        <th><span>SUMA BTC</span></th>
+                        <th><span>SUMA ETH</span></th>
                         <th><span>ILOŚĆ USDT</span></th>
                         <th><span>KURS</span></th>
 
@@ -453,7 +382,7 @@
                     <th><span>TYP</span></th>
                     <th><span>BID/ASK</span></th>
                     <th><span>ILOŚĆ (USDT)</span></th>
-                    <th><span>ILOŚĆ (BTC)</span></th>
+                    <th><span>ILOŚĆ (ETH)</span></th>
 
 
                 </tr>

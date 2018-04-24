@@ -20,7 +20,10 @@ var ajaxGet = function (url, callback) {
     }
     xhr.send(null);
 }
+//d();
 
+
+openorderspr();
 
 function depozit(war) {
     if (war == "") {
@@ -57,12 +60,49 @@ function balans(war) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("balans").innerHTML = this.responseText;
+
+        }
+        xmlhttp.open("GET", "php/saldo.php", true);
+        xmlhttp.send();
+
+    }
+}
+
+function nap() {
+    for (var i = 0; i <= 4; i++) {
+        var q = $('#b' + i).html();
+        q = parseFloat(q);
+        if (q < 0) {
+            q = q * (-1);
+            $('#b' + i).html(q);
+            console.log("zamiana");
         }
     }
-    xmlhttp.open("GET", "php/saldo.php", true);
-    xmlhttp.send();
 }
-balans();
+let promise = new Promise(resolve => {
+    let value = 'success';
+    resolve(value);
+});
+
+balans.then(response => {
+    console.log(response); // success
+    return 'another success';
+}).then(response => {
+    console.log(response); // another success 
+});
+
+function procent(m, w) {
+    var p = (w - m) / m * 100;
+    // console.log(p);
+    return p.toFixed(2) + " %";
+}
+
+function procent2(m, w) {
+    var p = (w - m) / m * 100;
+    // console.log(p);
+    return p.toFixed(1);
+}
+
 
 function openorder(war) {
     if (war == "") {
@@ -83,6 +123,7 @@ function openorder(war) {
     xmlhttp.open("GET", "php/openorder.php", true);
     xmlhttp.send();
 }
+
 openorder();
 
 function openorderspr() {
@@ -98,24 +139,17 @@ function openorderspr() {
 
         success: function (aa) {
             dbs = aa;
+            //    console.log(dbs);
 
-            //  console.log(aa);
-            //aa=JSON.parse(aa);
-
-            console.log(dbs);
-            //  console.log(dbs[2]);
-            //  console.log(dbs[5]);
-            //   //return dbs;
-
-             d();
+            //d();
 
         }
     });
-
+    return dbs;
 }
-openorderspr();
 
 
+//spr
 function historyorder(war) {
     if (war == "") {
 
@@ -135,197 +169,330 @@ function historyorder(war) {
     xmlhttp.open("GET", "php/orderhistory.php?q=" + war, true); //.php?q=" + war http://localhost:82/Projekt/Waluty/php/orderhistory.php
     xmlhttp.send();
 }
-historyorder("BTC-LTC");
 
-//dopracować
-//synchronizacja
-function ajax_zor(id) {
-    var url = 'php/zamorder.php'; 
+historyorder("BTC-ETH");
 
 
-console.log("zamorder")
+
+
+function ajax_zor(myId) {
+
     $.ajax({
-        url: url,
-        dataType: 'json',
+        url: 'php/zamorder.php',
+        dataType: 'text',
         type: 'POST',
         data: {
-
-            id: id
+            id: myId
         },
         success: function (response) {
             console.log(response);
-            console.log("response");
-            // if (response.status == 'ok')
-            //  $('#posiadasz').val(total);
-            //$('#info').html('Zlecenie powiodło się ');
-
         }
     });
 }
-//xmr,btc-usd,usd-bcc,usd-ltc,usd-eth,95 btc-ltc,btc-omg,btc-xmr,btc-eth
 
 
-var nr = [94, 60, 193, 257, 262, 265];
-var spr = [];//,   dbs;
-    var a,bittrex,dbs;
-
-function sprdane() {
 
 
-    //   openorderspr();
-    console.log(bittrex);
-    console.log(dbs);
-   
+
+//ltc eth xrp // btc eht ltc
+var nr = [89, 57, 181, 257, 261, 262];
+var spr = []; //,   dbs;
+var a, bittrex, dbs;
+
+
+
+
+function sprdane(dbs) {
+
     for (i in nr) {
         spr[i] = bittrex.result[nr[i]].Last;
-        //console.log(a);
-        console.log(spr[i]);
-
     }
-  
-
-
     //buy
-
     for (i in dbs) {
-        console.log("fot"+i);
+        //  console.log("fot" + i);
         if (dbs[i].typ == 1) {
+            if (dbs[i].market == "BTC-LTC") {
+                if (spr[0] <= dbs[i].kurs) {
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+            }
+            if (dbs[i].market == "BTC-ETH") {
+                //0 dla btc ltc
+                if (spr[1] <= dbs[i].kurs) {
 
-            //0 dla btc ltc
-            if (spr[0] <= dbs[i].kurs) {
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                    //   console.log("bay");
+                } else {}
+                //   console.log("czekamybay" + i);
+            }
+            if (dbs[i].market == "BTC-XRP") {
 
-console.log(dbs[i]);
-ajax_zor(dbs[i].id_oo);
-                console.log("bay");
-            } else
-                console.log("czekamybay"+i);
+                if (spr[2] <= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+
+            }
+            if (dbs[i].market == "BTC-USDT") {
+
+                if (spr[3] <= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+
+            }
+            if (dbs[i].market == "ETH-USDT") {
+
+                if (spr[4] <= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+
+            }
+            if (dbs[i].market == "LTC-USDT") {
+
+                if (spr[5] <= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+            }
         }
         //sell
         if (dbs[i].typ == 0) {
-            
-        
-            if (spr[0] >= dbs[i].kurs){
-                console.log("sell");
-                   console.log(dbs[i]);
-                ajax_zor(dbs[i].id_oo);
-            }
-            else{
-                console.log("czekamy sell"+i);
-            }
+            if (dbs[i].market == "BTC-LTC") {
 
+                if (spr[0] >= dbs[i].kurs) {
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+            }
+            if (dbs[i].market == "BTC-ETH") {
+
+                if (spr[1] >= dbs[i].kurs) {
+                    //  console.log("sell");
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                } else {
+                    //     console.log("czekamy sell" + i);
+                }
+
+            }
+            if (dbs[i].market == "BTC-XRP") {
+
+                if (spr[2] >= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                } else {
+
+                }
+
+            }
+            if (dbs[i].market == "BTC-USDT") {
+
+                if (spr[3] >= dbs[i].kurs) {
+
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                }
+
+            }
+            if (dbs[i].market == "ETH-USDT") {
+
+                if (spr[4] >= dbs[i].kurs) {
+                    //  console.log("sell");
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                } else {
+                    //     console.log("czekamy sell" + i);
+                }
+
+            }
+            if (dbs[i].market == "LTC-USDT") {
+
+                if (spr[5] >= dbs[i].kurs) {
+                    //  console.log("sell");
+                    console.log(dbs[i]);
+                    ajax_zor(dbs[i].id_oo);
+                    $('#zysk' + i).parent().css('color', 'green');
+                } else {
+                    //     console.log("czekamy sell" + i);
+                }
+
+            }
         }
-        //  */
-
-
-
-    }}
-
-    //zrób to wreszcie 
-    function d() {
-     
-       ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummaries',
-            function (response) {
-                response = JSON.parse(response);
-                if (!response)
-                    return;
-
-                bittrex = response;
-                //   openorderspr();
-                //console.log(bittrex);
-                //   $(document).ready(function () {          });
-                // console.log(dbs.typ[12]);
-                //     for (var i = 0; i <= (nr.length) - 1; i++) { spr[i] = bittrex.result[nr[i]].Last ; }
-
-                // for (var i = 0; i <= (nr.length)-1; i++) { console.log(spr[i] = bittrex.result[nr[i]]    ); }
-
-                //  for(var i=0;i<=dbs.length;i++){
-                //buy
-
-                /*  if (dbs.typ[12] == 1) {
-                         
-                       
-                           if (bittrex.result[nr[0]].Last <= dbs[i].kurs){
-                              
-                               
-                               
-                                  console.log("bay");
-                           } 
-                            
-                           else
-                               console.log("czekamy");
-
-
-                       }
-                   //sell
-                       if (dbs[i].typ == 0 ) {
-                           console.log("tys");
-                           // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                           if (bittrex.result[nr[0]].Last >= dbs[0].kurs)
-                               console.log("sell");
-                           else
-                               console.log("czekamy");
-
-
-                       }
-                   */
-
-            });
-      
     }
-    /*stoploss            if (dbs[0].typ == 1 && dbs[0].limit != 0) {
-                    console.log("tyss");
-                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                    if (dbs[0].kurs <= dbs[0].limit) {
-                        console.log("tysss"); //bay do spradzenia
-                        if (bittrex.result[95].Last <= dbs[0].kurs)
-                            console.log("bay");
-                        else
-                            console.log("czekamyb");
-                    } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
-                        if (bittrex.result[95].Last >= dbs[0].kurs)
-                            console.log("sell");
-                        else
-                            console.log("czekamys");
-                    }
-
-                } else console.log("niewum");
-
-       //buy
-            if (dbs[0].typ == 1 && dbs[0].limit == 0) {
-                  
-                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                    if (bittrex.result[95].Last <= dbs[0].kurs) // < bay > sell
-                        console.log("bay");
-                    else
-                        console.log("czekamy");
+}
 
 
-                } //sell
-                if (dbs[0].typ == 0 && dbs[0].limit == 0) {
-                    console.log("tys");
-                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                    if (bittrex.result[95].Last >= dbs[0].kurs)
-                        console.log("sell");
-                    else
-                        console.log("czekamy");
+
+//let promise = new Promise(resolve => {
+//  let value = 'success';
+//  resolve(value);
+//});
+//
+//promise.then(response => {
+//  console.log(response); // success
+//  return 'another success';
+//}).then(response => {
+//  console.log(response); // another success 
+//});
 
 
-                } //stoploss
-                if (dbs[0].typ == 1 && dbs[0].limit != 0) {
-                    console.log("tyss");
-                    // normal dbs[0].limit==0 spolos dbs[0].limit!=0
-                    if (dbs[0].kurs <= dbs[0].limit) {
-                        console.log("tysss"); //bay do spradzenia
-                        if (bittrex.result[95].Last <= dbs[0].kurs)
-                            console.log("bay");
-                        else
-                            console.log("czekamyb");
-                    } else if (dbs[0].typ == 0 && dbs[0].limit != 0) { //sell
-                        if (bittrex.result[95].Last >= dbs[0].kurs)
-                            console.log("sell");
-                        else
-                            console.log("czekamys");
-                    }
 
-                } else console.log("niewum");
-    */
+
+
+
+let promise = new Promise((resolve, reject) => {
+    let value = $.getJSON('https://bittrex.com/api/v1.1/public/getmarketsummaries',
+        function (jd) {
+            console.log(jd);
+
+        });
+    resolve(value);
+    reject(new Error('Coś poszło nie tak!'));
+});
+
+promise.then(response => {
+    console.log(response);
+    bittrex = response;
+    zysk(response);
+    balans();
+
+    var a = openorderspr();
+    return a;
+}).then(response => {
+    sprdane(response);
+    console.log(response);
+    // zysk(response);
+    return console.log("success ");
+}).catch(error => {
+    console.log(error.message);
+});
+
+function zysk(bittrex) { // można dodać waluty
+    var ltc = bittrex.result[nr[0]].Last;
+    var eth = bittrex.result[nr[1]].Last;
+    var xrp = bittrex.result[nr[2]].Last;
+    var btcu = bittrex.result[nr[3]].Last;
+    var ethu = bittrex.result[nr[4]].Last;
+    var ltcu = bittrex.result[nr[5]].Last;
+
+    console.log(ltc, eth, xrp, btcu, ethu, ltcu);
+
+    var ile = $('tbody#openorder').children('tr').length; //zlicznie
+    for (var i = 0; i <= ile - 1; i++) {
+        var k = $('#kurs' + i).text();
+        var mark = $('#marked' + i).text();
+        k = parseFloat(k);
+        // var j= $('#jed'+i).text();
+        // j=parseFloat(j);
+
+        if (mark == "BTC-LTC") {
+            // if (procent2(kurs, k) >= 0) {
+            if (ltc >= k) {
+                var a = k - ltc;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(ltc, k), k, ltc, mark);
+            } else if (ltc < k) {
+                var a = k - ltc;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(ltc, k), k, ltc, mark);
+            }
+        }
+        if (mark == "BTC-ETH") {
+            // if (procent2(kurs, k) >= 0) {
+            if (eth >= k) {
+                var a = k - eth;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(eth, k), k, eth, mark);
+            } else if (eth < k) {
+                var a = k - eth;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(eth, k), k, eth, mark);
+            }
+        }
+        if (mark == "BTC-XRP") {
+            // if (procent2(kurs, k) >= 0) {
+            if (xrp >= k) {
+                var a = k - xrp;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(xrp, k), k, xrp, mark);
+            } else if (xrp < k) {
+                var a = k - xrp;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(xrp, k), k, xrp, mark);
+            }
+        }
+        if (mark == "BTC-USDT") {
+            // if (procent2(kurs, k) >= 0) {
+            if (btcu >= k) {
+                var a = k - btcu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(btcu, k), k, btcu, mark);
+            } else if (btcu < k) {
+                var a = k - btcu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(btcu, k), k, btcu, mark);
+            }
+        }
+        if (mark == "LTC-USDT") {
+            // if (procent2(kurs, k) >= 0) {
+            if (ltcu >= k) {
+                var a = k - ltcu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(ltcu, k), k, ltcu, mark);
+            } else if (ltcu < k) {
+                var a = k - ltcu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(ltcu, k), k, ltcu, mark);
+            }
+        }
+        if (mark == "ETH-USDT") {
+            // if (procent2(kurs, k) >= 0) {
+            if (ethu >= k) {
+                var a = k - ethu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'green');
+                console.log(procent(ethu, k), k, ethu, mark);
+            } else if (ethu < k) {
+                var a = k - ethu;
+                $('#zysk' + i).text(a.toFixed(8)).css('color', 'red');
+                console.log(procent(ethu, k), k, ethu, mark);
+            }
+        }
+    }
+}
+
+
+
+
+function d() {
+
+    ajaxGet('https://bittrex.com/api/v1.1/public/getmarketsummaries',
+        function (response) {
+            response = JSON.parse(response);
+            if (!response)
+                return console.log("bittrex");;
+
+            bittrex = response;
+
+        });
+
+}
